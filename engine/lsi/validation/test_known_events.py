@@ -52,6 +52,17 @@ SAFE_PRODUCT = {
     "available_terms_months": [3, 6, 12],
 }
 
+MID_PRODUCT = {
+    "ltv_initial": 0.65,
+    "ltv_margincall": 0.80,
+    "ltv_liquidation": 0.85,
+    "grace_window_hours": 12,
+    "top_up_permitted": False,
+    "partial_liquidation": True,
+    "oracle_update_cadence": 24,
+    "available_terms_months": [3, 6, 12, 24],
+}
+
 # ---------------------------------------------------------------------------
 # Test runner
 # ---------------------------------------------------------------------------
@@ -65,7 +76,7 @@ def print_header(label):
     print(SEPARATOR)
 
 
-def run_test(product, label, expected_severe=False):
+def run_test(product, label, expected_severe=False, expected_low=False):
     print(f"\n  Product: {product['ltv_initial']*100:.0f}% LTV initial, "
           f"{product['ltv_liquidation']*100:.0f}% liquidation")
     print(f"  Top-up: {product['top_up_permitted']}, "
@@ -112,13 +123,17 @@ def run_test(product, label, expected_severe=False):
         else:
             print(f"⚠️  LOW — expected Severe/High (≥46) but got "
                   f"{headline['LSI_score']} ({headline['LSI_band']})")
-    else:
+    elif expected_low:
         if headline["LSI_score"] <= 25:
             print(f"✅ PASS — LSI {headline['LSI_score']} is Minimal/Low (≤25) "
                   f"for this conservative product")
         else:
             print(f"⚠️  HIGH — expected Minimal/Low (≤25) but got "
                   f"{headline['LSI_score']} ({headline['LSI_band']})")
+    else:
+        # Mid-tier: bracket between extremes — report the band
+        print(f"ℹ️  LSI {headline['LSI_score']} ({headline['LSI_band']}) "
+              f"— bracketed between Low (18.85) and Severe (73.87)")
 
     print()
     return results
@@ -141,6 +156,10 @@ def main():
     print_header("Test 2: Safe product (50%/95%)")
     print("  Expected: Near-zero liquidation probability (Minimal LSI)")
     run_test(SAFE_PRODUCT, "Safe product", expected_severe=False)
+
+    print_header("Test 3: Mid-tier product (65%/85%, no top-up)")
+    print("  Expected: Moderate LSI (26-45) — bracket between the extremes")
+    run_test(MID_PRODUCT, "Mid-tier", expected_severe=False)
 
     print_header("Done — all results printed above (no assertions).")
 

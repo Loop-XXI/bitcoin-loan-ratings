@@ -1,0 +1,12 @@
+# LSI Parameters for Unchained
+# These feed into the Liquidation Stress Index engine.
+# All values from primary sources (ToS, loan agreement, product page, help center).
+
+ltv_initial: 0.40          # Initial LTV = 40% (equivalent to 250% CTP — from loans glossary: "Unchained loans originate at a 250% CTP")
+ltv_margincall: 0.6667     # Margin call/CTP violation LTV = ~66.67% (equivalent to 150% CTP — from help center: "Automated CTP violation will occur if CTP ratio reaches below 150%")
+ltv_liquidation: 0.8333    # Liquidation/CTP immediate failure LTV = ~83.33% (equivalent to 120% CTP — from help center: "At a CTP ratio of 120%, we will first provide a notice that we have foreclosed")
+grace_window_hours: 24     # Borrower has 24 hours to respond to CTP violation (from help center: "You will have 24 hours to clear the CTP violation")
+top_up_permitted: true     # Borrower can add collateral (deposit additional bitcoin) during grace window
+partial_liquidation: true  # "we will liquidate sufficient collateral to repay the unpaid loan balance" — partial, not full
+oracle_update_cadence: "every 1 minute"  # CME CF Bitcoin Real Time Index updates every minute
+available_terms_months: [12]  # 360-day term = ~12 months (single term offered)

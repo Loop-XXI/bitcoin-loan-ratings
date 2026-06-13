@@ -1,0 +1,168 @@
+# Evidence file for Unchained (unchained.com)
+# Every datapoint includes: value, source_url, excerpt (quote from source),
+# tier (T1-T4 or T0), and retrieved_at (ISO 8601 date).
+#
+# Tier definitions:
+#   T1: Cryptographically/on-chain verifiable, or independently reproducible
+#   T2: Independent third party (audit report, regulator filing, court record)
+#   T3: Binding self-disclosure (ToS, loan agreement, legal docs)
+#   T4: Marketing claim, blog post, support-chat statement
+#   T0: No information found
+
+last_updated: "2026-06-13"
+
+# Gate conditions
+gates:
+  G1:                    # Confirmed unremediated loss of customer funds
+    value: false
+    source_url: "https://www.unchained.com/about"
+    excerpt: "Unchained reports $0 capital losses and zero lost bitcoin across $1B+ in loan originations"
+    tier: T4
+    retrieved_at: "2026-06-13"
+  G2:                    # Active fraud findings/litigation
+    value: false
+    source_url: "https://www.unchained.com/terms-of-service"
+    excerpt: "No fraud findings, consent orders, or active litigation referenced in ToS or regulatory disclosures"
+    tier: T0
+    retrieved_at: "2026-06-13"
+  G3:                    # Unrestricted undisclosed rehypothecation
+    value: false
+    source_url: "https://help.unchained.com/what-is-loan-collateral-and-what-does-unchained-do-with-it"
+    excerpt: "Unchained does NOT rehypothecate, or lend to other people/entities, any bitcoin backing an Unchained loan."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  G4:                    # Single-key or undisclosed unilateral custody
+    value: false
+    source_url: "https://help.unchained.com/what-is-loan-collateral-and-what-does-unchained-do-with-it"
+    excerpt: "Bitcoin associated with your loan collateral is stored in multisignature addresses viewable on the blockchain within a 2-of-3 quorum using private keys held by the Key Agent, Unchained, and the borrower, eliminating Unchained as a single point of failure. To move any bitcoin stored at an address, two of the three keys will be required to sign."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  G5:                    # No enforceable/script-based claim to collateral
+    value: false
+    source_url: "https://unchnd.co/trustagreement"
+    excerpt: "Borrowers receive a Specified Unit of Beneficial Interest (SUBI) representing equitable title to deposited assets. SUBI holders have an unqualified right to direct Trust Administrator to transfer bitcoin back (subject to Pledgee consent if security interest granted)."
+    tier: T3
+    retrieved_at: "2026-06-13"
+
+# Pillar 1 — Key Control & Exit
+pillar_1:
+  "1a":                  # Unilateral exit path
+    score: 80
+    source_url: "https://help.unchained.com/what-is-caravan"
+    excerpt: "Caravan is Unchained's stateless, open-source multisig wallet tool. Caravan was designed as a recovery tool for vaults and loans; Unchained clients can use the tool to retain full access to their bitcoin in the case that Unchained services are down or no longer exist."
+    tier: T4
+    retrieved_at: "2026-06-13"
+  "1b":                  # Quorum architecture
+    score: 100
+    source_url: "https://help.unchained.com/what-is-loan-collateral-and-what-does-unchained-do-with-it"
+    excerpt: "Bitcoin associated with loan collateral is stored in multisignature addresses within a 2-of-3 quorum using private keys held by the Key Agent, Unchained, and the borrower. To move any bitcoin stored at an address, two of the three keys will be required to sign."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "1c":                  # Failure recovery
+    score: 80
+    source_url: "https://help.unchained.com/loan-unchained-does-not-exist"
+    excerpt: "Your loan will continue to be serviced, and your collateral will continue to be secured with keys. Unchained loans are serviced by Bitcoin Collateral Services LLC, a subsidiary that is bankruptcy remote from Unchained Capital, Inc. Any Unchained private keys securing bitcoin associated with loan collateral will be transferred to a new key agent who will assume the responsibilities of signing for future transactions as needed."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "1d":                  # Legal claim quality (CeFi)
+    score: 80
+    source_url: "https://unchnd.co/trustagreement"
+    excerpt: "Borrowers receive a Specified Unit of Beneficial Interest (SUBI) representing equitable title in specific bitcoin held under the UC Secured Assets Trust Series, a Delaware Statutory Trust. Each SUBI creates a separate series under 12 Del.C. 3806(b). Governed by Article 8 of the UCC; intended to be a 'security' under 6 Del.C. 8-102(a)(15)."
+    tier: T3
+    retrieved_at: "2026-06-13"
+
+# Pillar 2 — Asset Fidelity
+pillar_2:
+  "2a":                  # Collateral form
+    score: 100
+    source_url: "https://help.unchained.com/what-is-loan-collateral-and-what-does-unchained-do-with-it"
+    excerpt: "The trust structure which backs Unchained loans only accepts bitcoin. We have no plans to accept other assets as collateral."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "2b":                  # Reuse rights
+    score: 100
+    source_url: "https://help.unchained.com/what-is-loan-collateral-and-what-does-unchained-do-with-it"
+    excerpt: "Unchained does NOT rehypothecate, or lend to other people/entities, any bitcoin backing an Unchained loan."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "2c":                  # Segregation verifiability
+    score: 100
+    source_url: "https://help.unchained.com/where-can-i-see-the-addresses-where-the-bitcoin-backing-my-loan-is-stored"
+    excerpt: "Borrowers can verify the addresses associated with loan collateral on a hardware wallet. Unchained's multi-institution model is a secure and trust-minimized way of storing the bitcoin associated with your loan collateral."
+    tier: T3
+    retrieved_at: "2026-06-13"
+
+# Pillar 3 — Verifiability
+pillar_3:
+  "3a":                  # Code transparency
+    score: 80
+    source_url: "https://github.com/unchained-capital/caravan"
+    excerpt: "Caravan is Unchained's open-source (MIT license) Bitcoin multisig coordination software. Source code available on GitHub. Deprecated/archived but moved to caravan-bitcoin/caravan. Additionally, unchained-wallets library is open-source."
+    tier: T1
+    retrieved_at: "2026-06-13"
+  "3b":                  # Audit coverage
+    score: 40
+    source_url: "https://www.unchained.com/terms-of-service"
+    excerpt: "No third-party security audit reports, smart contract audits, or penetration test results published on unchained.com or in their documentation as of retrieval date."
+    tier: T0
+    retrieved_at: "2026-06-13"
+  "3c":                  # Reserve attestation
+    score: 60
+    source_url: "https://help.unchained.com/what-is-loan-collateral-and-what-does-unchained-do-with-it"
+    excerpt: "Borrowers can verify the addresses associated with loan collateral on a hardware wallet. Collateral stored in multisignature addresses viewable on the blockchain. No formal published proof-of-reserves or third-party attestation report found."
+    tier: T4
+    retrieved_at: "2026-06-13"
+  "3d":                  # Price-feed integrity
+    score: 80
+    source_url: "https://help.unchained.com/how-do-you-determine-the-price-of-bitcoin"
+    excerpt: "Unchained uses the CME CF Bitcoin Real Time Index for the BTC/USD price for commercial loans. This price feed, which is used to calculate the CTP ratio, updates every minute."
+    tier: T3
+    retrieved_at: "2026-06-13"
+
+# Pillar 4 — Operator Resilience
+pillar_4:
+  "4a":                  # Track record
+    score: 100
+    source_url: "https://www.unchained.com/blog/revisiting-unchaineds-core-lending-principles"
+    excerpt: "Unchained is the longest-tenured, continuously operating lender in the bitcoin industry. First bitcoin-backed loan originated in June 2017, prior to block 480,000. Thousands of loans originated, over $1 billion in loan volume, zero lost bitcoin."
+    tier: T4
+    retrieved_at: "2026-06-13"
+  "4b":                  # Funding structure
+    score: 80
+    source_url: "https://www.unchained.com/blog/unchained-series-b"
+    excerpt: "$60 million Series B led by Valor Equity Partners (investors in SpaceX, Tesla, BitGo, Lightning Labs) in April 2023. Prior rounds: $25M Series A led by NYDIG/Stone Ridge (June 2021), $15M Series A extension (2022), $3M seed round (2018). $150M lending commitment from NYDIG."
+    tier: T4
+    retrieved_at: "2026-06-13"
+  "4c":                  # Regulatory standing
+    score: 60
+    source_url: "https://www.unchained.com/legal-regulatory"
+    excerpt: "Unchained Capital, Inc. (NMLS ID: 1900773), Unchained Trading, LLC (NMLS ID: 2273761), B&C Lending LLC (NMLS ID: 2656661), Bitcoin Collateral Services LLC (NMLS ID: 2423070). California Financing Law License No. 60DBO-78867. Money transmitter licenses in multiple states. Gannett Trust Company received Wyoming trust charter in 2025."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "4d":                  # Loss absorption
+    score: 60
+    source_url: "https://www.unchained.com/about"
+    excerpt: "Unchained reports $0 capital losses. Over 100,000 BTC secured on platform. $1B+ loans originated. Zero lost bitcoin. Bankruptcy-remote servicing subsidiary (Bitcoin Collateral Services LLC)."
+    tier: T4
+    retrieved_at: "2026-06-13"
+
+# Pillar 5 — Borrower Exposure
+pillar_5:
+  "5a":                  # Identity surface
+    score: 40
+    source_url: "https://www.unchained.com/terms-of-service"
+    excerpt: "Registration requires: name, DOB, SSN, address, email, phone, government ID. Full AML/KYC checks performed; soft credit pull possible. Must be a citizen and resident of the country/state listed. Not previously suspended, and not subject to OFAC sanctions."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "5b":                  # Disbursement asset
+    score: 80
+    source_url: "https://www.unchained.com/loans"
+    excerpt: "Access dollar liquidity without selling bitcoin. Commercial loans disbursed in USD via wire to borrower's bank account. Payments must originate from borrower's bank account (no third-party)."
+    tier: T3
+    retrieved_at: "2026-06-13"
+  "5c":                  # Cost opacity
+    score: 80
+    source_url: "https://www.unchained.com/pricing"
+    excerpt: "Fixed transparent pricing: 12% interest rate, 14.18% APR, 2% origination fee. No hidden fees or variable rates. No prepayment penalties. Additional fees disclosed: Late payment $10, forced liquidation 2% selling fee, returned ACH $15, collateral sale at trading desk fees (1%)."
+    tier: T3
+    retrieved_at: "2026-06-13"

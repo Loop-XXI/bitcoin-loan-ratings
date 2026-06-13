@@ -1,0 +1,1 @@
+# Pipeline — evidence → scores computation
