@@ -1,0 +1,23 @@
+# Provider profile — {provider_name}
+# Edit this file with facts gathered from primary sources.
+# Every field should be traceable to evidence.yaml.
+
+entity_name: ""            # Legal entity name
+jurisdiction: ""           # Country/state of incorporation
+website: ""                # Primary website URL
+year_founded:              # Integer year
+loan_types:                # List: ["collateralized", "under-collateralized", "peer-to-peer"]
+status: "active"           # active, paused, defunct
+
+products:
+  - name: ""               # Product name as shown to users
+    description: ""        # 1-2 sentence description
+    url: ""                # Direct link to product page
+    custody_class: ""      # "self-custody", "multi-sig", "custodial", "smart-contract", "dlc"
+    kyc_required: true     # boolean
+    available_in: []       # List of countries/regions
+    currencies:            # Disbursement currencies offered
+      - BTC
+    min_loan:              # Float in USD or BTC
+    max_loan:              # Float in USD or BTC
+    terms_months: []       # Available loan terms in months

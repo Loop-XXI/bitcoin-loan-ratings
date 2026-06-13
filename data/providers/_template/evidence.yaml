@@ -1,0 +1,169 @@
+# Evidence file for {provider_name}
+# Every datapoint must include: value, source_url, excerpt (quote from source),
+# tier (T1-T4 or T0), and retrieved_at (ISO 8601 date).
+#
+# Tier definitions:
+#   T1: Cryptographically/on-chain verifiable, or independently reproducible
+#   T2: Independent third party (audit report, regulator filing, court record)
+#   T3: Binding self-disclosure (ToS, loan agreement, legal docs)
+#   T4: Marketing claim, blog post, support-chat statement
+#   T0: No information found (do not use this as a crutch — mark T0 only when
+#       genuinely no evidence exists; the sub-signal will score flat 20)
+
+last_updated: "YYYY-MM-DD"
+
+# Gate conditions
+gates:
+  G1:                    # Confirmed unremediated loss of customer funds
+    value: false
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  G2:                    # Active fraud findings/litigation
+    value: false
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  G3:                    # Unrestricted undisclosed rehypothecation
+    value: false
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  G4:                    # Single-key or undisclosed unilateral custody
+    value: false
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  G5:                    # No enforceable/script-based claim to collateral
+    value: false
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+
+# Pillar 1 — Key Control & Exit
+pillar_1:
+  "1a":                  # Unilateral exit path
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "1b":                  # Quorum architecture
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "1c":                  # Failure recovery
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "1d":                  # Legal claim quality (CeFi)
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+
+# Pillar 2 — Asset Fidelity
+pillar_2:
+  "2a":                  # Collateral form
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "2b":                  # Reuse rights
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "2c":                  # Segregation verifiability
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+
+# Pillar 3 — Verifiability
+pillar_3:
+  "3a":                  # Code transparency
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "3b":                  # Audit coverage
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "3c":                  # Reserve attestation
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "3d":                  # Price-feed integrity
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+
+# Pillar 4 — Operator Resilience
+pillar_4:
+  "4a":                  # Track record
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "4b":                  # Funding structure
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "4c":                  # Regulatory standing
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "4d":                  # Loss absorption
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+
+# Pillar 5 — Borrower Exposure
+pillar_5:
+  "5a":                  # Identity surface
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "5b":                  # Disbursement asset
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""
+  "5c":                  # Cost opacity
+    score: 0
+    source_url: ""
+    excerpt: ""
+    tier: T0
+    retrieved_at: ""

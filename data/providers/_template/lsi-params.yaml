@@ -1,0 +1,12 @@
+# LSI Parameters for {provider_name}
+# These feed into the Liquidation Stress Index engine.
+# All values from primary sources (ToS, loan agreement, product page).
+
+ltv_initial: 0.0          # Initial loan-to-value ratio (float, e.g. 0.50 = 50%)
+ltv_margincall: 0.0       # LTV at which margin call triggers (float, e.g. 0.70)
+ltv_liquidation: 0.0      # LTV at which liquidation executes (float, e.g. 0.80)
+grace_window_hours: 0     # Hours borrower has to respond to margin call (int)
+top_up_permitted: false   # Can borrower add collateral during grace window?
+partial_liquidation: false # Does partial liquidation occur, or full liquidation?
+oracle_update_cadence: "" # How frequently is the price oracle updated? (e.g. "every block", "hourly", "daily")
+available_terms_months: [] # List of available loan terms in months (e.g. [3, 6, 12, 24])
