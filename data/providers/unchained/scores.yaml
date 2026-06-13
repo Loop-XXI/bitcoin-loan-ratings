@@ -2,10 +2,10 @@ last_computed: '2026-06-13'
 engine_version: 1.0.0
 gates_triggered: []
 pillar_scores:
-  pillar_1: 58.75
+  pillar_1: 59.75
   pillar_2: 75.0
   pillar_3: 47.5
-  pillar_4: 41.25
+  pillar_4: 49.25
   pillar_5: 50.0
-anchor_score: 54.68
+anchor_score: 56.72
 grade_letter: D

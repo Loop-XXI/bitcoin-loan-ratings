@@ -8,18 +8,33 @@ anchor points as appropriate.
 
 ## Pillar 1 — Key Control & Exit (weight 0.28)
 
-### 1a — Unilateral Exit Path
-Can the borrower reclaim their collateral without counterparty cooperation?
+### 1a_arch — Unilateral Exit: Architecture (verifiable from code/on-chain)
+Can the borrower technically recover collateral without the operator's participation, based on the system's architecture?
 
 | Score | Anchor |
 |-------|--------|
-| 0 | Borrower **entirely dependent on operator cooperation** to release collateral. No script-enforced path exists. Operator has unilateral veto (e.g., CeFi with no multisig). |
-| 25 | Borrower has a **contractual right** to exit, but enforcement requires legal process, court order, or operator goodwill. No on-chain mechanism. |
-| 50 | Borrower has a **timelocked or conditional** path, but operator retains the ability to freeze, delay, or block exit under certain terms (e.g., 2-of-3 multisig where operator controls 2 keys). |
-| 75 | Borrower can exit **unilaterally via a script-enforced mechanism** (e.g., 2-of-3 multisig where borrower controls 1 key + a pre-signed refund, or a DLC with CETs). Operator *could* delay but cannot permanently block. |
-| 100 | Borrower has a **fully script-enforced unilateral recovery path** with no operator involvement needed (e.g., on-chain covenant, taproot script path, or time-locked refund in a self-custodial protocol). Borrower holds all keys needed for exit. |
+| 0 | **Single-key architecture** — operator controls all keys. No technical path for borrower to recover without operator. |
+| 25 | **Shared custody with operator veto** — borrower holds a key, but the quorum requires operator's signature to move coins (e.g., 2-of-3 where operator controls 2 keys). |
+| 50 | **Partial independence** — borrower + one independent party can sign without operator, but the independent party is nominated/controlled by the operator (e.g., 2-of-3 multisig where a Key Agent is appointed by the provider). |
+| 75 | **Borrower + independent party can exit without operator** — 2-of-3 where borrower + an independent third party (not operator-affiliated) can sign. Recovery tooling is documented and available. |
+| 100 | **Fully script-enforced unilateral recovery** — borrower holds all keys needed for exit. No counterparty of any kind needed (e.g., on-chain covenant, taproot script path, time-locked refund in a self-custodial protocol). |
 
-> **CeFi with no multisig → 1a ≤ 25.**
+> **Evidence tiering note:** Score is based on what the code and on-chain data prove, not what marketing claims. Open-source multisig coordination software (e.g., Caravan) is T1-verifiable. The actual multisig address structure is T1-verifiable on-chain.
+
+---
+
+### 1a_contract — Unilateral Exit: Contractual Right (mid-loan/provider dependence)
+Does the written agreement allow the borrower to exit mid-loan without the provider's active cooperation?
+
+| Score | Anchor |
+|-------|--------|
+| 0 | **No contractual right to exit** — collateral is held for the full term with no early release mechanism. |
+| 25 | **Contractual right exists** but enforcement requires provider's active cooperation (e.g., provider must process payoff, sign release tx, or approve surrender). No script-enforced or pre-signed mechanism. |
+| 50 | **Contractual right with conditional automation** — provider cooperation is required but the conditions and process are fully documented and binding (e.g., "pay off balance → collateral released within X business days"). |
+| 75 | **Pre-signed or timelocked exit mechanism** — borrower holds a pre-signed refund transaction or timelock that releases collateral upon meeting contractual conditions (e.g., paying off loan). Provider cannot refuse. |
+| 100 | **Fully script-enforced unilateral exit mid-loan** — borrower can reclaim collateral at any time via an on-chain mechanism without any counterparty action, even while the loan is active. Contract is self-executing. |
+
+> CeFi products with pure custodial control score ≤25 here: no on-chain mechanism, full provider dependence for exit.
 
 ---
 

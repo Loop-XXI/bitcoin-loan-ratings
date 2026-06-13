@@ -47,7 +47,7 @@ PILLAR_WEIGHTS: Final[dict[str, float]] = {
 
 # Sub-signal keys per pillar (for documentation / validation).
 PILLAR_SUB_SIGNALS: Final[dict[str, list[str]]] = {
-    "pillar_1": ["1a", "1b", "1c", "1d"],
+    "pillar_1": ["1a_arch", "1a_contract", "1b", "1c", "1d"],
     "pillar_2": ["2a", "2b", "2c"],
     "pillar_3": ["3a", "3b", "3c", "3d"],
     "pillar_4": ["4a", "4b", "4c", "4d"],
